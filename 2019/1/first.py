@@ -16,7 +16,17 @@ def compute_fuel_requirement(module_mass):
     return module_mass // 3 - 2
 
 
+def run_tests():
+    assert (compute_fuel_requirement(12) == 2)
+    assert (compute_fuel_requirement(14) == 2)
+    assert (compute_fuel_requirement(1969) == 654)
+    assert (compute_fuel_requirement(100756) == 33583)
+
+    print("Tests passed!")
+
+
 def main():
+    run_tests()
     print(sum([compute_fuel_requirement(module_mass=m) for m in module_masses]))
 
 
