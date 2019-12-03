@@ -1,1 +1,3 @@
-My solutions for [Advent of Code 2019](https://adventofcode.com/2019)
+My solutions for [Advent of Code](https://adventofcode.com/)
+
+Run by `python3 file_name.py`
