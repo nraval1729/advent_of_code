@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"sort"
+	"strconv"
+	"strings"
 )
 
 // Problem: https://adventofcode.com/2020/day/5
@@ -50,27 +52,20 @@ func computeSeatID(boardingPass string) int {
 }
 
 func computeSeatRow(boardingPass string) int {
-	start, stop := 0, 127
-	for i := 0; i < LEN_OF_F_B; i++ {
-		dir := string(boardingPass[i])
-		if dir == "F" {
-			stop = start + (stop-start)/2
-		} else {
-			start = start + (stop-start)/2 + 1
-		}
-	}
-	return start
+	seatRow, _ := strconv.ParseInt(convertBoardingPassToBinary(boardingPass)[:LEN_OF_F_B], 2, 64)
+	return int(seatRow)
 }
 
 func computeSeatCol(boardingPass string) int {
-	start, stop := 0, 7
-	for i := LEN_OF_F_B; i < len(boardingPass); i++ {
-		dir := string(boardingPass[i])
-		if dir == "L" {
-			stop = start + (stop-start)/2
-		} else {
-			start = start + (stop-start)/2 + 1
-		}
-	}
-	return start
+	seatCol, _ := strconv.ParseInt(convertBoardingPassToBinary(boardingPass)[LEN_OF_F_B:], 2, 64)
+	return int(seatCol)
+}
+
+// After thinking about it, I realized that the boardingPass is just a binary number encoded as a string of B and R (1) and F and L (0)
+func convertBoardingPassToBinary(boardingPass string) string {
+	bReplaced := strings.ReplaceAll(boardingPass, "B", "1")
+	rReplaced := strings.ReplaceAll(bReplaced, "R", "1")
+	fReplaced := strings.ReplaceAll(rReplaced, "F", "0")
+
+	return strings.ReplaceAll(fReplaced, "L", "0")
 }
