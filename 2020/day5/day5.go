@@ -40,7 +40,7 @@ func computePartTwo(boardingPasses []string) int {
 	}
 	sort.Ints(seatIds)
 	for i := 0; i < len(seatIds)-1; i++ {
-		if seatIds[i+1] - seatIds[i] == 2 {
+		if seatIds[i+1]-seatIds[i] == 2 {
 			return seatIds[i] + 1
 		}
 	}
