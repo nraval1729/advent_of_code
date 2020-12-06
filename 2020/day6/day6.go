@@ -7,6 +7,8 @@ import (
 	"strings"
 )
 
+// Problem: https://adventofcode.com/2020/day/6
+// Input: https://adventofcode.com/2020/day/6/input
 func main() {
 	groupAnswers, err := readGroupAnswers("input.txt")
 	if err != nil {
