@@ -8,11 +8,6 @@ import (
 	"strings"
 )
 
-type BagColourCountCombo struct {
-	Colour string
-	Count  int
-}
-
 // Problem: https://adventofcode.com/2020/day/7
 // Input: https://adventofcode.com/2020/day/7/input
 func main() {
@@ -25,11 +20,9 @@ func main() {
 }
 
 func computePartOne(bagToContainedBags map[string][]string) int {
-	myBagColour := "shiny gold"
 	numBagsThatCanContainMyBag := 0
-
 	for bagColour, _ := range bagToContainedBags {
-		if dfs(myBagColour, bagColour, bagToContainedBags) {
+		if dfs("shiny gold", bagColour, bagToContainedBags) {
 			numBagsThatCanContainMyBag++
 		}
 	}
