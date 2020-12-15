@@ -33,9 +33,7 @@ func computePartOne(nums []int, lenSpokenNumbers int) int {
 
 		if ok && len(spokenBeforeIndices) > 1 {
 			// if spoken before
-			lastIndex := spokenBeforeIndices[1]
-			secondLastIndex := spokenBeforeIndices[0]
-			currSpokenNumber = lastIndex - secondLastIndex
+			currSpokenNumber = spokenBeforeIndices[1] - spokenBeforeIndices[0]
 			spokenNumbers[i] = currSpokenNumber
 		} else {
 			//	not spoken before
@@ -45,7 +43,7 @@ func computePartOne(nums []int, lenSpokenNumbers int) int {
 		// Update mapping for spokenNumber
 		currSpokenNumberSpokenBeforeIndices, ok := numberToSpokenBeforeIndices[currSpokenNumber]
 		if ok {
-			// only append last two
+			// only append last two occurences
 			numberToSpokenBeforeIndices[currSpokenNumber] = append(
 				[]int{currSpokenNumberSpokenBeforeIndices[len(currSpokenNumberSpokenBeforeIndices)-1], i},
 			)
